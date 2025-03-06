@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .calculator-container {
+            background-color: black;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            justify-content: center;
+            align-items: center;
+        }
+        .screen {
+            grid-column: span 4;
+            background-color: black;
+            color: white;
+            text-align: right;
+            padding: 15px;
+            font-size: 3em;
+            border-radius: 5px;
+        }
+        .button {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 2em;
+            border-radius: 50%;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .button:active {
+            background-color: rgb(181, 180, 177);
+            color: black;
+        }
+        .button.operator {
+            background-color: rgb(213, 134, 7);
+        }
+        .button.operator2 {
+            background-color: rgb(126, 113, 115);
+        }
+        .button.double {
+            grid-column: span 2;
+            width: 130px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div id="screen" class="screen">0</div>
+            <div class="button operator2" onclick="clearScreen()">AC</div>
+            <div class="button operator2">+/-</div>
+            <div class="button operator2">%</div>
+            <div class="button operator">÷</div>
+            <div class="button" onclick="inputValue('7')">7</div>
+            <div class="button" onclick="inputValue('8')">8</div>
+            <div class="button" onclick="inputValue('9')">9</div>
+            <div class="button operator">×</div>
+            <div class="button" onclick="inputValue('4')">4</div>
+            <div class="button" onclick="inputValue('5')">5</div>
+            <div class="button" onclick="inputValue('6')">6</div>
+            <div class="button operator">−</div>
+            <div class="button" onclick="inputValue('1')">1</div>
+            <div class="button" onclick="inputValue('2')">2</div>
+            <div class="button" onclick="inputValue('3')">3</div>
+            <div class="button operator">+</div>
+            <div class="button double" onclick="inputValue('0')">0</div>
+            <div class="button" onclick="inputValue('.')">,</div>
+            <div class="button operator">=</div>
+        </div>
+    </div>
+
+    <script>
+        let screen = document.getElementById("screen");
+        let currentInput = "0";
+
+        function inputValue(value) {
+            if (currentInput === "0" && value !== ".") {
+                currentInput = value; // Mengganti "0" dengan angka pertama
+            } else {
+                currentInput += value;
+            }
+            screen.textContent = currentInput;
+        }
+
+        function clearScreen() {
+            currentInput = "0";
+            screen.textContent = currentInput;
+        }
+    </script>
+</body>
+</html>
